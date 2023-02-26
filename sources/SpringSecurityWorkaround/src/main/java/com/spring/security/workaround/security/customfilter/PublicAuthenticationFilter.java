@@ -13,9 +13,10 @@ public class PublicAuthenticationFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
       FilterChain filterChain) throws ServletException, IOException {
 
-    System.out.println("PublicAuthenticationFilter");
-
+    System.out.println("PublicAuthenticationFilter request");
     filterChain.doFilter(request, response);
+    System.out.println("PublicAuthenticationFilter response");
+
   }
 
 }

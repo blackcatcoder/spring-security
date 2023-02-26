@@ -49,7 +49,7 @@ public class SecurityConfiguration{
   @Bean
   public SecurityFilterChain securityFilterChainIndex(HttpSecurity http) throws Exception {
 
-    http.securityMatcher("/**").authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
+    http.securityMatcher("/**").authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
         .addFilterAfter(new IndexAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
         .formLogin(Customizer.withDefaults());
 
@@ -75,13 +75,13 @@ public class SecurityConfiguration{
 //    return http.build();
 //  }
 
-  @Bean
-  ApplicationListener<AuthenticationSuccessEvent> authSuccess() {
-    return event -> {
-      var auth = event.getAuthentication();
-      LoggerFactory.getLogger(SecurityConfiguration.class).info("LOGIN SUCCESFUL [{}] - {}", auth.getClass().getSimpleName(), auth.getName());
-    };
-  }
+//  @Bean
+//  ApplicationListener<AuthenticationSuccessEvent> authSuccess() {
+//    return event -> {
+//      var auth = event.getAuthentication();
+//      LoggerFactory.getLogger(SecurityConfiguration.class).info("LOGIN SUCCESFUL [{}] - {}", auth.getClass().getSimpleName(), auth.getName());
+//    };
+//  }
 
   @Bean
   public UserDetailsService userDetailsService() {

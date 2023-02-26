@@ -16,6 +16,7 @@ public class IndexAuthenticationFilter extends OncePerRequestFilter {
     System.out.println("IndexAuthenticationFilter request");
     filterChain.doFilter(request, response);
     System.out.println("IndexAuthenticationFilter response");
+
   }
 
 }
